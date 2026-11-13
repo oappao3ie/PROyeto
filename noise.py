@@ -32,7 +32,7 @@ def generateNoiseImage(width, height, samplePointCount = 10):
 
                 imageMap[pX][pY] = value
 
-                dist = (abs(pX - x) + abs(pY - y))
+                dist = math.sqrt((pX - x) ** 2 + (pY - y) ** 2)
 
                 avgDist = dist
                 valueT = value
