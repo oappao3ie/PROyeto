@@ -10,14 +10,6 @@ def generateNoiseImage(width, height, samplePointCount = 10):
 
     samplePoints = [[randint(0, width-1), randint(0, height-1), random()] for _ in range(samplePointCount)]
 
-    for SP in samplePoints:
-
-        value = SP[2]
-        pX = SP[0]
-        pY = SP[1]
-
-        imageMap[pX][pY] = value
-
     for x in range(width):
         for y in range(height):
 
