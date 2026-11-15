@@ -21,29 +21,22 @@ def generateNoiseImage(width, height, samplePointCount = 10):
     for x in range(width):
         for y in range(height):
 
-            avgDist = 0
-            valueT = 0
+            weightedSum = 0.0
+            totalWeight = 0.0
 
-            for SP in samplePoints:
+            for pX, pY, value in samplePoints:
+                dist = math.hypot(pX - x, pY - y)
 
-                value = SP[2]
-                pX = SP[0]
-                pY = SP[1]
+                if dist == 0:
+                    weightedSum = value
+                    totalWeight = 1.0
+                    break
 
-                imageMap[pX][pY] = value
+                weight = 1.0 / (dist)
+                weightedSum += value * weight
+                totalWeight += weight
 
-                dist = math.sqrt((pX - x) ** 2 + (pY - y) ** 2)
-
-                avgDist = dist
-                valueT = value
-
-            linearDist = avgDist / (width + height)
-
-            newPixelVal = lerp(valueT, 1, linearDist)
-
-            newPixelVal = min(1, newPixelVal)
-
-            imageMap[x][y] = newPixelVal
+            imageMap[x][y] = weightedSum / totalWeight
 
     return imageMap
 

@@ -10,7 +10,7 @@ windowY = 500
 
 gridSizeRatioX = windowX / gridSizeX
 
-image = noise.generateNoiseImage(gridSizeX, gridSizeY, 1)
+image = noise.generateNoiseImage(gridSizeX, gridSizeY, 4)
 
 window = pygame.display.set_mode((windowX, windowY))
 clock = pygame.time.Clock()
