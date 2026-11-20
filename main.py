@@ -1,7 +1,7 @@
 import pygame
 import noise
 import time
-import vector
+from vector import Vector3
 
 gridSizeX = 100
 gridSizeY = 100
